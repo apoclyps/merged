@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  cli: &cli
+    build: .
+    command: python -m merged check
+    working_dir: /usr/src/app/
+    environment:
+      - DEBUG=true
+      - GITHUB_ORG=${GITHUB_ORG}
+      - GITHUB_REPOSITORIES=${GITHUB_REPOSITORIES}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_USER=${GITHUB_USER}
+    volumes:
+      - "./:/usr/src/app/"
+    stdin_open: true
+    tty: true
+
+  test:
+    <<: *cli
+    environment:
+      - GITHUB_ORG=${GITHUB_ORG-"org"}
+      - GITHUB_REPOSITORIES=${GITHUB_REPOSITORIES-"repo1,repo2"}
+      - GITHUB_TOKEN=${GITHUB_TOKEN-"token"}
+      - GITHUB_USER=${GITHUB_USER-"user"}
+    command: pytest -s -vvv

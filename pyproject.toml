@@ -1,0 +1,101 @@
+[tool.codespell]
+quiet-level = 3
+builtin = "clear,rare,informal,code,names"
+ignore-words-list = "pullrequest"
+
+[tool.isort]
+profile="black"
+combine_as_imports=true
+default_section="THIRDPARTY"
+force_grid_wrap=0
+include_trailing_comma=true
+known_first_party=["merged", "app", "lib"]
+line_length=119
+multi_line_output=3
+skip=[".git", "__pycache", ".venv", "settings", ".tox"]
+use_parentheses=true
+
+[tool.black]
+line_length=119
+
+[tool.mypy]
+ignore_missing_imports=true
+pretty=true
+
+[[tool.mypy.overrides]]
+module = "app.*"
+ignore_missing_imports=false
+disallow_untyped_defs=true
+
+[[tool.mypy.overrides]]
+module = "lib.*"
+ignore_missing_imports=false
+disallow_untyped_defs=true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs=true
+
+[tool.pytest.ini_options]
+addopts = "-vvv -s "
+testpaths = [
+    "app",
+    "tests",
+]
+
+[tool.ruff]
+fix = false
+cache-dir = ".cache/ruff"
+
+# ruff linting rules are listed within: https://beta.ruff.rs/docs/rules/#flake8-2020-ytt
+select = ["C90", "E", "F", "I", "W", "B", "UP", "YTT", "S"]
+ignore = ["E501", "B904", "S101"]
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+unfixable = ["F401"]
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    "__pycache",
+    "migrations",
+    "settings",
+    ".coverage",
+    ".direnv",
+    ".mypy_cache",
+    ".pytype",
+    ".pdbrc",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".tox",
+    ".venv",
+    ".git",
+    ".gitignore",
+    "poetry.lock",
+    "site-packages",
+    "tmp",
+    "Dockerfile",
+    "docker-compose.yml",
+    "gitlab-ci.yml",
+]
+
+line-length = 120
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Assume Python 3.11
+target-version = "py311"
+
+[tool.ruff.mccabe]
+max-complexity = 20
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["E402", "F401"]
+
+[tool.ruff.isort]
+combine-as-imports = true
+known-first-party = ["app", "lib"]
+force-wrap-aliases = true
