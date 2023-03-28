@@ -69,4 +69,4 @@ ENV/
 .mypy_cache/
 
 # exports
-dependencies.svg
+durations*.csv
