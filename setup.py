@@ -13,7 +13,7 @@ with open("README.md", encoding="utf-8") as fh:
 setup(
     name="merged",
     packages=find_namespace_packages(include=["*"]),
-    version="0.2.3",
+    version="0.1.0",
     license="MIT",
     description=("A terminal UI dashboard to view python dependencies across Github repositories."),
     author="Kyle Harrison",
