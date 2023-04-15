@@ -46,6 +46,7 @@ touch .env
 
 echo "GITHUB_ORG=apoclyps" >> .env
 echo "GITHUB_REPOSITORY=micropython-by-example" >> .env
+echo "GIT_BRANCH=main" >> .env
 python -m merged config
 ```
 
@@ -54,7 +55,7 @@ python -m merged config
 ```bash
 cd /home/<your-user>/workspace/apoclyps/merged
 touch settings.ini
-echo "[settings]\nGITHUB_ORG=apoclyps\nGITHUB_REPOSITORY=micropython-by-example" >> settings.ini
+echo "[settings]\nGITHUB_ORG=apoclyps\nGITHUB_REPOSITORY=micropython-by-example\nGIT_BRANCH=main" >> settings.ini
 
 python -m merged config
 ```
@@ -66,7 +67,7 @@ If you wish to set the configuration path to use an `ini` or `.env` file when ru
 ```bash
 cd /home/apoclyps/
 touch settings.ini
-echo "[settings]\nGITHUB_ORG=apoclyps\nGITHUB_REPOSITORY=micropython-by-example" >> settings.ini
+echo "[settings]\nGITHUB_ORG=apoclyps\nGITHUB_REPOSITORY=micropython-by-example\nGIT_BRANCH=main" >> settings.ini
 
 cd /home/<your-user>/workspace/apoclyps/merged
 export MERGED_PATH_TO_CONFIG=/home/<your-user>/
