@@ -12,7 +12,9 @@ else:
 # Github Config
 GITHUB_DEFAULT_PAGE_SIZE = config("GITHUB_DEFAULT_PAGE_SIZE", cast=int, default=100)
 GITHUB_ORG = config("GITHUB_ORG", cast=str)
-GITHUB_REPOSITORIES = config("GITHUB_REPOSITORIES", cast=Csv(post_process=list[str], strip=" "))
+GITHUB_REPOSITORY = config("GITHUB_REPOSITORY", cast=str)
+GITHUB_BRANCH = config("GITHUB_BRANCH", cast=str, default="main")
 GITHUB_TOKEN = config("GITHUB_TOKEN", cast=str)
 GITHUB_URL = config("GITHUB_URL", cast=str, default="https://api.github.com")
 GITHUB_USER = config("GITHUB_USER", cast=str)
+DAYS_TO_REVIEW = config("DAYS_TO_REVIEW", cast=int, default=14)

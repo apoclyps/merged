@@ -7,7 +7,7 @@ services:
     environment:
       - DEBUG=true
       - GITHUB_ORG=${GITHUB_ORG}
-      - GITHUB_REPOSITORIES=${GITHUB_REPOSITORIES}
+      - GITHUB_REPOSITORY=${GITHUB_REPOSITORY}
       - GITHUB_TOKEN=${GITHUB_TOKEN}
       - GITHUB_USER=${GITHUB_USER}
     volumes:
@@ -19,7 +19,7 @@ services:
     <<: *cli
     environment:
       - GITHUB_ORG=${GITHUB_ORG-"org"}
-      - GITHUB_REPOSITORIES=${GITHUB_REPOSITORIES-"repo1,repo2"}
+      - GITHUB_REPOSITORY=${GITHUB_REPOSITORY-"repo1,repo2"}
       - GITHUB_TOKEN=${GITHUB_TOKEN-"token"}
       - GITHUB_USER=${GITHUB_USER-"user"}
     command: pytest -s -vvv

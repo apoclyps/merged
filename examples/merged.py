@@ -110,8 +110,6 @@ def output_dataframe(dataframe: DataFrame) -> None:
 if __name__ == "__main__":
     repository_configurations = [
         {"org": "slicelife", "name": "ros-service", "base": "master"},
-        {"org": "slicelife", "name": "third-party-orders-service", "base": "main"},
-        # {"org": "slicelife", "name": "owners-portal-analytics-service", "base": "main"},
     ]
 
     repository_statistics = []

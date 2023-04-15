@@ -2,6 +2,7 @@ import click
 from rich.console import Console
 
 from merged.environment_configuration.view import EnvironmentConfigurationView
+from merged.pull_requests.view import MergedView
 
 from ..version import __version__
 
@@ -34,3 +35,13 @@ def config(show: bool) -> None:
 def main() -> None:
     """Entry point to CLI"""
     cli()
+
+
+@cli.command(help="List merged pull requests")
+def check() -> None:
+    """
+    Command:\n
+        merged check
+    """
+    console = Console()
+    MergedView(console=console).render()
