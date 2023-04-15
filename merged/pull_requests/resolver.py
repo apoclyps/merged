@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 
 import humanize
-from github import Github, IssueEvent
+from github import Github
 
 from merged.config import DAYS_TO_REVIEW, GITHUB_TOKEN
 
@@ -11,11 +11,7 @@ from merged.config import DAYS_TO_REVIEW, GITHUB_TOKEN
 class MergedPullRequestResolved:
     """Resolves package versions from Pipfile against PyPI"""
 
-    client = None
-
-    def __init__(self) -> None:
-        """Initialize the resolver"""
-        self.client = Github(GITHUB_TOKEN)
+    client = Github(GITHUB_TOKEN)
 
     def retrieve_merged_pull_requests(self, repository_configuration: dict) -> list[dict[str, str]]:
         """Retrieve the Pipfile from GitHub"""
@@ -31,11 +27,9 @@ class MergedPullRequestResolved:
             if pr.created_at < datetime.now() - timedelta(days=DAYS_TO_REVIEW):
                 break
 
-            marked_ready_for_review: list[IssueEvent] = [
-                issue for issue in pr.get_issue_events() if issue.event == "ready_for_review"
-            ]
+            marked_ready_for_review = [issue for issue in pr.get_issue_events() if issue.event == "ready_for_review"]
 
-            active_review_at: datetime = None
+            active_review_at: datetime | None = None
             if len(marked_ready_for_review) > 0:
                 active_review_at = marked_ready_for_review[0].created_at
             else:
@@ -47,8 +41,10 @@ class MergedPullRequestResolved:
             created_at: datetime = pr.created_at
             merged_at: datetime = pr.merged_at
             author: str = pr.user.login
-            active_review_at: datetime = pr.created_at
-            duration: str = humanize.naturaldelta((pr.merged_at or pr.closed_at) - active_review_at)
+
+            review_ended: datetime = pr.merged_at or pr.closed_at or datetime.now()
+
+            duration: str = str(humanize.naturaldelta(review_ended - active_review_at))
 
             if author == "dependabot[bot]":
                 continue
@@ -58,15 +54,15 @@ class MergedPullRequestResolved:
 
             repository_statistics.append(
                 {
-                    "repository": name,
-                    "title": title,
-                    "number": number,
-                    "created_at": created_at,
-                    "ready_for_review_at": active_review_at,
-                    "merged_at": merged_at,
-                    "author": author,
-                    "active_review_at": active_review_at,
-                    "duration": duration,
+                    "repository": str(name),
+                    "title": str(title),
+                    "number": str(number),
+                    "created_at": str(created_at),
+                    "ready_for_review_at": str(active_review_at),
+                    "merged_at": str(merged_at),
+                    "author": str(author),
+                    "active_review_at": str(active_review_at),
+                    "duration": str(duration),
                 }
             )
 

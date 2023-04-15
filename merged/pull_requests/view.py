@@ -39,7 +39,7 @@ class MergedView:
     def render(self) -> None:
         """Render the view"""
 
-        with ThreadPoolExecutor(max_workers=5) as executor:
+        with ThreadPoolExecutor(max_workers=1) as executor:
             merged_pull_requests_by_services: list[dict] = list(executor.map(self._retrieve, GITHUB_REPOSITORY))
 
         for merged_pull_requests_by_service in merged_pull_requests_by_services:
@@ -87,13 +87,13 @@ class MergedView:
                 duration = f"[red]{duration}[/red]"
 
             table.add_row(
-                str(repository),
-                str(number),
-                str(title),
-                str(author),
-                str(ready_for_review_at),
-                str(merged_at),
-                str(duration),
+                repository,
+                number,
+                title,
+                author,
+                ready_for_review_at,
+                merged_at,
+                duration,
             )
 
         return table

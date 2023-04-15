@@ -47,7 +47,7 @@ test: build.test network ## Run the unit tests and linters
 
 lint: ## lint and autocorrect the code
 	@docker-compose build test
-	@docker-compose run --rm --no-merged test isort . && black --check . && mypy . && flake8 . && pylint --rcfile=.pylintrc merged && bandit merged && vulture --min-confidence 90 merged && codespell merged && find . -name '*.py' -exec pyupgrade {} +
+	@docker-compose run --rm --no-deps test isort . && black --check . && mypy . && flake8 . && pylint --rcfile=.pylintrc merged && bandit merged && vulture --min-confidence 90 merged && codespell merged && find . -name '*.py' -exec pyupgrade {} +
 
 
 install: ## build and install the cli
