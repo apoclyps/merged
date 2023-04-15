@@ -1,10 +1,10 @@
 import os
 
-from decouple import AutoConfig, Csv
+from decouple import AutoConfig
 
 # configures decouple to use settings.ini or .env file from another directory
-if DEPS_PATH_TO_CONFIG := os.environ.get("DEPS_PATH_TO_CONFIG", None):
-    config = AutoConfig(search_path=DEPS_PATH_TO_CONFIG)
+if MERGED_PATH_TO_CONFIG := os.environ.get("MERGED_PATH_TO_CONFIG", None):
+    config = AutoConfig(search_path=MERGED_PATH_TO_CONFIG)
 else:
     config = AutoConfig(search_path=".")
 

@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import humanize
 from github import Github, IssueEvent
 
-from merged.config import GITHUB_TOKEN, DAYS_TO_REVIEW
+from merged.config import DAYS_TO_REVIEW, GITHUB_TOKEN
 
 
 @dataclass

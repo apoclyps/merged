@@ -69,7 +69,7 @@ touch settings.ini
 echo "[settings]\nGITHUB_ORG=apoclyps\nGITHUB_REPOSITORY=micropython-by-example" >> settings.ini
 
 cd /home/<your-user>/workspace/apoclyps/merged
-export DEPS_PATH_TO_CONFIG=/home/<your-user>/
+export MERGED_PATH_TO_CONFIG=/home/<your-user>/
 
 python -m merged config
 ```

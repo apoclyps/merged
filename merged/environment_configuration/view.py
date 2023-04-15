@@ -28,8 +28,8 @@ class EnvironmentConfigurationView:
             {"name": "GITHUB_USER", "value": config.GITHUB_USER},
             {"name": "GITHUB_URL", "value": config.GITHUB_URL},
             {
-                "name": "DEPS_PATH_TO_CONFIG",
-                "value": f"{config.DEPS_PATH_TO_CONFIG}",
+                "name": "MERGED_PATH_TO_CONFIG",
+                "value": f"{config.MERGED_PATH_TO_CONFIG}",
             },
             {
                 "name": "GITHUB_DEFAULT_PAGE_SIZE",
