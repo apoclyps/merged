@@ -58,7 +58,7 @@ repos:
         exclude: tests
 
   - repo: https://github.com/ambv/black
-    rev: 23.3.0
+    rev: 23.7.0
     hooks:
       - id: black
         args:
@@ -103,12 +103,12 @@ repos:
           - tomli
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.8.0
+    rev: v3.10.1
     hooks:
       - id: pyupgrade
 
   - repo: https://github.com/pycqa/flake8
-    rev: 6.0.0
+    rev: 6.1.0
     hooks:
       - id: flake8
 
@@ -126,6 +126,6 @@ repos:
         args: ["--disable", "line-length"]
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.0.277"
+    rev: "v0.0.281"
     hooks:
       - id: ruff
