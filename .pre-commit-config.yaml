@@ -113,7 +113,7 @@ repos:
       - id: flake8
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.13.1
+    rev: 5.13.2
     hooks:
       - id: isort
         name: isort (python)
@@ -126,6 +126,6 @@ repos:
         args: ["--disable", "line-length"]
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.1.7"
+    rev: "v0.1.8"
     hooks:
       - id: ruff
