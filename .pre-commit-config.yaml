@@ -58,7 +58,7 @@ repos:
         exclude: tests
 
   - repo: https://github.com/ambv/black
-    rev: 23.12.1
+    rev: 24.1.1
     hooks:
       - id: black
         args:
@@ -120,12 +120,12 @@ repos:
         args: ["--settings-path", "pyproject.toml", "."]
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.38.0
+    rev: v0.39.0
     hooks:
       - id: markdownlint-fix
         args: ["--disable", "line-length"]
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.1.14"
+    rev: "v0.1.15"
     hooks:
       - id: ruff
