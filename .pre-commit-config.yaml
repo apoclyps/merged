@@ -126,6 +126,6 @@ repos:
         args: ["--disable", "line-length"]
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.1.15"
+    rev: "v0.2.0"
     hooks:
       - id: ruff
