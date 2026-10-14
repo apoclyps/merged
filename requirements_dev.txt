@@ -12,7 +12,7 @@ mypy==1.4.1
 pre-commit==3.3.3
 pylint==2.17.4
 pytest==7.4.0
-pyupgrade==3.10.1
+pyupgrade==3.22.0
 ruff==0.0.284
 types-click==7.1.8
 types-freezegun==1.1.10
